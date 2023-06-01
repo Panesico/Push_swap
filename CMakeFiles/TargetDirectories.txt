@@ -1,5 +1,0 @@
-/home/panesico/CLionProjects/Push_swap_lists/cmake-build-debug/CMakeFiles/LIBFT.dir
-/home/panesico/CLionProjects/Push_swap_lists/cmake-build-debug/CMakeFiles/PUSH_SWAP.dir
-/home/panesico/CLionProjects/Push_swap_lists/cmake-build-debug/CMakeFiles/test.dir
-/home/panesico/CLionProjects/Push_swap_lists/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/panesico/CLionProjects/Push_swap_lists/cmake-build-debug/CMakeFiles/rebuild_cache.dir

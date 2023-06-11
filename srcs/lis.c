@@ -26,7 +26,6 @@ int	ft_b_swap_check(t_stc *stc)
 
 int ft_is_between_ends(t_stc *stc, int num)
 {
-	t_lista *head;
 	if (stc->fna->content < num && num < stc->hash[0]->content)
 		return (1);
 	return (0);
@@ -133,7 +132,7 @@ int ft_check_lis(t_stc *stc, int *j)
 	if (stc->hash[0]->content == stc->lis[*j])
 	{
 		ft_ra(stc, 1);
-		*j++;
+		*j+=1;
 		return (1);
 	}
 	return (0);
@@ -144,12 +143,12 @@ void ft_check_lis2(t_stc *stc, int *j, int *i)
 	if (!ft_check_lis(stc, j))
 	{
 		ft_ra(stc, 1);
-		*i++;
+		*i+=1;
 	}
 	if (!ft_check_lis(stc, j))
 	{
 		ft_ra(stc, 1);
-		*i++;
+		*i+=1;
 	}
 }
 
@@ -164,47 +163,49 @@ int ft_a_more_than_2(t_stc *stc)
 
 int ft_move_cheese_a(t_stc *stc)
 {
-	t_lista *head;
-	t_lista *head_n;
-	t_lista *head2;
 
-	head = 0;
-	head_n = 0;
-	head2 = 0;
-	if (ft_a_more_than_2(stc) && stc->hash[1])
-	{
-		head = stc->hash[0];
-		head_n = head->next;
-		head2 = stc->hash[1];
-		if (head->content > head_n->content && head_n->content > head2->content)
-			ft_sa(stc, 1);
-	}
-	return (0);
 }
 
 void	ft_lis_to_b(t_stc *stc)
 {
 	int i;
 	int j;
+	int boole;
 	int max;
 
 	j = 0;
-	stc->tba_s;
-	i = -1;
+	boole = 1;
 	max = stc->lis[stc->l_s - 1];
+	i = -1;
+	ft_max_finder_list(stc, stc->tba_s);
 	while(++i < stc->tba_s)
 	{
-		if (stc->hash[0]->content > max)
+		if (boole)
 		{
-			max = stc->hash[0]->content;
-			ft_ra(stc, 1);
-		}
-		else if (stc->hash[0]->content == stc->lis[j])
-		{
-			ft_ra(stc, 1);
-			j++;
+			if (stc->hash[0]->content != stc->lis[0])
+			{
+				if (stc->hash[0]->content > max)
+				{
+					max = stc->hash[0]->content;
+					ft_ra(stc, 1);
+				}
+				else
+					ft_pb(stc);
+			}
+			else
+				boole = 0;
 		}
 		else
-			ft_pb(stc);
+		{
+			if (stc->hash[0]->content == stc->lis[j])
+			{
+				ft_ra(stc, 1);
+				j++;
+			}
+			else
+			{
+				ft_pb(stc);
+			}
+		}
 	}
 }

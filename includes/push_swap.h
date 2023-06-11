@@ -80,7 +80,6 @@ void	ft_max_finder(t_stc *stc); //mirar si sirve
 void	ft_min_finder_list(t_stc *stc, int half);
 void	ft_max_finder_list(t_stc *stc, int half);
 void	ft_free_all(t_stc *stc);
-int		ft_move_cheese(t_stc *stc);
 int		ft_b_more_than_2(t_stc *stc);
 void	ft_sort_3(t_stc *stc);
 void	ft_sort_5(t_stc *stc);

@@ -112,7 +112,8 @@ int	main(int argc, char **argv)
 		exit(0);
 	}
 	stc = ft_create_stc(tab, size, NULL, 0);
-	if (stc->a_s == 1 || !ft_final_validator(stc))
+	printf ("HOla SOY A_SIZE:  %d\n", stc->a_s);
+	if (stc->a_s == 1 || ft_final_validator(stc))
 	{
 		ft_free_all(stc);
 		exit(0);
@@ -125,6 +126,8 @@ int	main(int argc, char **argv)
 		ft_sort_5(stc);
 	else
 		ft_solver(stc);
-	ft_printf("!! %d movimientos!!", stc->final_moves);
+	if (ft_final_validator(stc))
+		ft_printf("sorted");
+	ft_printf("!! %d movimientos!!\n", stc->final_moves);
 	ft_free_all(stc);
 }

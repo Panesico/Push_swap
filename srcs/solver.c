@@ -27,6 +27,22 @@ int	ft_find_moves_max(t_stc *stc, int *tmp, int num)
 {
 	if (num > stc->max_num)
 		return (tmp[0] = stc->max_num_pos, 1);
+	return (0);
+}
+
+int ft_lis_confirm(t_stc *stc, int num)
+{
+	int	i;
+
+	i = 0;
+	while (i < stc->l_s - 1)
+	{
+		if (stc->lis[i] < num && num < stc->lis[i + 1])
+			return (1);
+		else
+			i++;
+	}
+	return (0);
 }
 
 int	ft_find_moves_a(t_stc *stc, int *tmp, int num, int half)
@@ -108,8 +124,7 @@ int ft_compare_nums(t_stc *stc)
 		maxb = stc->tmp2[0] + stc->tmp2[1];
 	if (maxb < maxa)
 		return (1);
-	else
-		return (0);
+	return (0);
 }
 
 void	ft_change_tmp_value(t_stc *stc)
@@ -168,7 +183,7 @@ int ft_b_more_than_2(t_stc *stc)
 	return (0);
 }
 
-int ft_move_cheese(t_stc *stc)
+void	ft_move_cheese(t_stc *stc)
 {
 	t_lista *head;
 	t_lista *head_n;

@@ -68,7 +68,8 @@ char	*ft_strjoin_gnl(char *s1, char *s2)
 		s1 = (char *)ft_calloc_gnl(1, sizeof(char));
 	if (!s1 || !s2)
 		return (0);
-	str = ft_calloc_gnl(((ft_strlen_gnl(s1) + ft_strlen_gnl(s2)) + 1), sizeof(char));
+	str = ft_calloc_gnl(((ft_strlen_gnl(s1)
+					+ ft_strlen_gnl(s2)) + 1), sizeof(char));
 	if (!str)
 		return (0);
 	i = -1;

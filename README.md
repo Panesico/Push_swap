@@ -16,10 +16,17 @@ make
 ## Contents
 
 ra -> rotate stack a.
+
 rb -> rotate stack b.
+
 rr -> rotate both stacks.
+
 pa -> push from b to a.
+
 pb -> push form a to b.
+
 sa -> swap first and second value from stack a.
+
 sb -> swap first and second value from stack b.
+
 ss -> swap first and second value from both stacks.

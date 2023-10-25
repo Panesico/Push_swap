@@ -8,17 +8,13 @@
 
 ```
 make
-
 ./push_swap <any set of numbers>
-
 ```
 
 Use pipe into word count to see the number of movements.
 
 ```
-
 ./push_swap 3 2 1 | wc -l
-
 ```
 
 ## Contents

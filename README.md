@@ -13,6 +13,14 @@ make
 
 ```
 
+Use pipe into word count to see the number of movements.
+
+```
+
+./push_swap 3 2 1 | wc -l
+
+```
+
 ## Contents
 
 ra -> rotate stack a.

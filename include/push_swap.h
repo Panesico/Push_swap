@@ -13,10 +13,6 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-// parametros de exit()
-// solucionar leak en parser que tiene que ver con tab al haber repetidos
-	// ft_check_if_num es la posible causa.
-
 #include "../libft/libft.h"
 
 typedef struct s_lista

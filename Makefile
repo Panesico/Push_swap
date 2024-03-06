@@ -22,7 +22,7 @@ UP			=	\033[A
 CUT			=	\033[K
 
 #source files
-SRC_FILES	=	main.c lis.c move_sets.c parser.c push_swap_moves.c small_sort.c struc.c validator.c
+SRC_FILES	=	main.c lis.c move_sets.c parser.c push_swap_moves.c small_sort.c solver.c struc.c validator.c
 
 OBJ_FILES	=	$(SRC_FILES:.c=.o)
 LIBFT_DIR	=	./libft/
@@ -38,9 +38,9 @@ all: $(NAME)
 
 #compile the executable
 $(NAME): $(OBJ)
-	@echo "$(YELLOW)Compiling [$(NAME)]...$(RESET)"
+	@echo -e "$(YELLOW)Compiling [$(NAME)]...$(RESET)"
 	@$(C) $(CFLAGS) $(OBJ) -o $(NAME) $(LIBFT)
-	@echo "$(GREEN)Finished [$(NAME)]$(RESET)"
+	@echo -e "$(GREEN)Finished [$(NAME)]$(RESET)"
 
 $(LIBFT):
 	@$(MAKE) -C $(LIBFT_DIR)
@@ -48,26 +48,26 @@ $(LIBFT):
 #compile objects
 $(OBJ_DIR)%.o:$(SRC_DIR)%.c
 	@mkdir -p $(OBJ_DIR)
-	@echo "$(YELLOW)Compiling [$@]...$(RESET)"
+	@echo -e "$(YELLOW)Compiling [$@]...$(RESET)"
 	@$(C) $(CFLAGS) -I $(INC_DIR) -o $@ -c $<
 	@printf "$(UP)$(CUT)"
-	@echo "$(GREEN)Finished [$@]$(RESET)"
+	@echo -e "$(GREEN)Finished [$@]$(RESET)"
 	@printf "$(UP)$(CUT)"
 
 #clean rule
 clean:
 	@if [ -d "$(OBJ_DIR)" ]; then \
 	rm -rf $(OBJ_DIR); \
-	echo "$(BLUE)Deleting all objects from $(CURRENT_DIRECTORY)...$(RESET)"; else \
-	echo "No objects to remove from $(CURRENT_DIRECTORY)."; \
+	echo -e "$(BLUE)Deleting all objects from $(CURRENT_DIRECTORY)...$(RESET)"; else \
+	echo -e "No objects to remove from $(CURRENT_DIRECTORY)."; \
 	fi;
 
 #fclean rule
 fclean: clean
 	@if [ -f "$(NAME)" ]; then \
 	rm -f $(NAME); \
-	echo "$(BLUE)Deleting $(RED)$(NAME)$(BLUE) binary from $(CURRENT_DIRECTORY)$(RESET)"; else \
-	echo "No Executable to remove from $(CURRENT_DIRECTORY)."; \
+	echo -e "$(BLUE)Deleting $(RED)$(NAME)$(BLUE) binary from $(CURRENT_DIRECTORY)$(RESET)"; else \
+	echo -e "No Executable to remove from $(CURRENT_DIRECTORY)."; \
 	fi;
 
 #re rule

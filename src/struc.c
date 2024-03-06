@@ -38,18 +38,6 @@ void	ft_free_lista(t_lista **lista)
 	free(lista);
 }
 
-void	ft_free_all(t_stc *stc)
-{
-	if (stc->tmp)
-		free(stc->tmp);
-	if (stc->tmp2)
-		free(stc->tmp2);
-	if (stc->hash)
-		ft_free_lista(stc->hash);
-	free(stc->tb_a);
-	free(stc);
-}
-
 t_lista	**ft_fill_hash(t_lista **hash, int *tab, int size, t_lista **last)
 {
 	int i;
@@ -119,12 +107,11 @@ t_stc	*ft_create_stc(int *tab, int size, int *lis, int lis_size)
 	stc->tmp2 = (int *)malloc(sizeof(int) * 2);
 	ft_declare_stc(stc, lis, lis_size);
 	if (!stc->hash || !stc->tmp || !stc->tmp2)
-		return (ft_free_all(stc), NULL);
+		exit(1);
 	if (!ft_validate_if_dup(stc))
 	{
 		ft_printf("error");
-		ft_free_all(stc);
-		exit(0);
+		exit(1);
 	}
 	return (stc);
 }

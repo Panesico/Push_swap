@@ -16,7 +16,6 @@ void	ft_main2(t_stc *stc)
 {
 	if (stc->a_s == 1 || ft_final_validator(stc))
 	{
-		ft_free_all(stc);
 		exit(0);
 	}
 	if (stc->a_s == 2)
@@ -36,15 +35,14 @@ int	main(int argc, char **argv)
 	t_stc	*stc;
 
 	if (argc < 2)
-		exit(0);
+		exit(1);
 	size = 0;
 	tab = ft_parser(argc, argv, &size);
 	if (!tab)
 	{
 		ft_printf("Error");
-		exit(0);
+		exit(1);
 	}
 	stc = ft_create_stc(tab, size, NULL, 0);
 	ft_main2(stc);
-	ft_free_all(stc);
 }

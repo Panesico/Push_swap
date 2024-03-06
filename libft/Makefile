@@ -20,16 +20,16 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	$(AR) $(NAME) $(OBJ)
-	@echo Making...
+	@echo -e Making...
 bonus: $(OBJBON) $(OBJ)
 	@$(AR) $(NAME) $(OBJBON) $(OBJ)
-	@echo Making bonus...
+	@echo -e Making bonus...
 clean:
 	@rm -rf *.o
-	@echo Deleting .o files
+	@echo -e Deleting .o files
 fclean: clean
 	@rm -f $(NAME)
-	@echo Deleting .a file
+	@echo -e Deleting .a file
 
 %.o: %.c
 	gcc $(CFLAGS) -o $@ -c $<

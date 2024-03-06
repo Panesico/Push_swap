@@ -6,7 +6,7 @@
 /*   By: panesico <panesico@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 23:27:20 by panesico          #+#    #+#             */
-/*   Updated: 2023/05/27 18:57:59 by panesico         ###   ########.fr       */
+/*   Updated: 2024/03/06 23:29:31 by jorgfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	ft_sa(t_stc *stc, int boole)
 {
-	t_lista *swap;
-	t_lista *swap2;
+	t_lista	*swap;
+	t_lista	*swap2;
 
 	swap = stc->hash[0];
 	swap2 = swap->next;
@@ -32,8 +32,8 @@ void	ft_sa(t_stc *stc, int boole)
 
 void	ft_sb(t_stc *stc, int boole)
 {
-	t_lista *swap;
-	t_lista *swap2;
+	t_lista	*swap;
+	t_lista	*swap2;
 
 	swap = stc->hash[1];
 	swap2 = swap->next;

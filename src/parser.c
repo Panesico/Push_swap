@@ -1,16 +1,34 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parser.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jorgfern <jorgfern@student.42malaga.com>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/06 22:38:26 by jorgfern          #+#    #+#             */
+/*   Updated: 2024/03/06 23:33:04 by jorgfern         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/push_swap.h"
 
-int *ft_free_split(char **str, int *tab)
+void	ft_free_split(char **split)
 {
 	int	i;
 
-	i = -1;
-	while(str[++i])
-		free(str[i]);
-	free(str);
-	if (tab)
-		free(tab);
-	return (0);
+	i = 0;
+	while (split[i])
+	{
+		free(split[i]);
+		i++;
+	}
+	free(split);
+}
+
+void	ft_error(int error)
+{
+	ft_printf("Error\n");
+	exit(error);
 }
 
 int	*ft_parser1(char **argv, int *size)
@@ -20,25 +38,24 @@ int	*ft_parser1(char **argv, int *size)
 	int		i;
 	long	long_num;
 
-	tab = 0;
 	str = ft_split(argv[1], ' ');
 	if (!ft_check_if_num_split(str))
-		return(ft_free_split(str, 0));
+		ft_error(1);
 	while (str[*size])
 		*size += 1;
 	tab = (int *)malloc(sizeof(int) * (*size));
 	if (!tab)
-		ft_free_split(str, tab);
+		ft_error(1);
 	i = 0;
-	long_num = 0;
 	while (str[i])
 	{
 		long_num = ft_atol(str[i]);
-		if(long_num > 2147483647)
-			ft_free_split(str, tab);
+		if (long_num > 2147483647 || long_num < -2147483648)
+			ft_error(1);
 		tab[i] = ft_atoi(str[i]);
 		i++;
 	}
+	ft_free_split(str);
 	return (tab);
 }
 
@@ -48,18 +65,16 @@ int	*ft_parser2(int argc, char **argv, int *size)
 	int		i;
 	long	long_num;
 
-	tab = 0;
 	if (!ft_check_if_num_argv(argc, argv))
-		return(0);
+		return (0);
 	*size = argc - 1;
 	tab = (int *)malloc(sizeof(int) * *size);
 	i = 1;
-	long_num = 0;
 	while (i <= *size)
 	{
 		long_num = ft_atol(argv[i]);
-		if(long_num > 2147483647)
-			return (0);
+		if (long_num > 2147483647 || long_num < -2147483648)
+			ft_error(1);
 		tab[i - 1] = ft_atoi(argv[i]);
 		i++;
 	}

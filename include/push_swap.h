@@ -79,5 +79,6 @@ void	ft_find_best_move(t_stc *stc);
 int		ft_check_if_num_split(char **str);
 int		ft_check_if_num_argv(int argc, char **argv);
 int		ft_validate_if_dup(t_stc *stc);
+void	ft_error(int error);
 
 #endif

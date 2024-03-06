@@ -1,6 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
+/*   struc.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jorgfern <jorgfern@student.42malaga.com>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/06 22:38:26 by jorgfern          #+#    #+#             */
+/*   Updated: 2024/03/06 23:29:31 by jorgfern         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
 /*   create_lista.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: panesico <panesico@student.1337.ma>        +#+  +:+       +#+        */
@@ -26,7 +38,7 @@ t_lista	*ft_new_node(int content)
 
 void	ft_free_lista(t_lista **lista)
 {
-	t_lista *to_del;
+	t_lista	*to_del;
 
 	while (*lista)
 	{
@@ -40,7 +52,7 @@ void	ft_free_lista(t_lista **lista)
 
 t_lista	**ft_fill_hash(t_lista **hash, int *tab, int size, t_lista **last)
 {
-	int i;
+	int		i;
 	t_lista	*head;
 
 	i = 0;
@@ -109,10 +121,6 @@ t_stc	*ft_create_stc(int *tab, int size, int *lis, int lis_size)
 	if (!stc->hash || !stc->tmp || !stc->tmp2)
 		exit(1);
 	if (!ft_validate_if_dup(stc))
-	{
-		ft_printf("error");
-		exit(1);
-	}
+		ft_error(1);
 	return (stc);
 }
-

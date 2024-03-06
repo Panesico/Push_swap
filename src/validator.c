@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   validator.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jorgfern <jorgfern@student.42malaga.com>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/06 22:38:26 by jorgfern          #+#    #+#             */
+/*   Updated: 2024/03/06 23:29:31 by jorgfern         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/push_swap.h"
 
-int ft_check_if_num_split(char **str)
+int	ft_check_if_num_split(char **str)
 {
 	int	i;
 	int	j;
@@ -9,15 +21,17 @@ int ft_check_if_num_split(char **str)
 	while (str[i])
 	{
 		j = 0;
+		if (str[i][j] == '-' || str[i][j] == '+')
+			++j;
 		while (str[i][j])
 			if (!ft_isdigit(str[i][j++]))
 				return (0);
-		i++;
+		++i;
 	}
 	return (1);
 }
 
-int ft_check_if_num_argv(int argc, char **argv)
+int	ft_check_if_num_argv(int argc, char **argv)
 {
 	int	i;
 	int	j;
@@ -26,6 +40,8 @@ int ft_check_if_num_argv(int argc, char **argv)
 	while (i < argc)
 	{
 		j = 0;
+		if (argv[i][j] == '-' || argv[i][j] == '+')
+			++j;
 		while (argv[i][j])
 			if (!ft_isdigit(argv[i][j++]))
 				return (0);
@@ -34,11 +50,11 @@ int ft_check_if_num_argv(int argc, char **argv)
 	return (1);
 }
 
-int ft_validate_if_dup(t_stc *stc)
+int	ft_validate_if_dup(t_stc *stc)
 {
-	int i;
+	int	i;
 	int	j;
-	int to_find;
+	int	to_find;
 
 	i = 0;
 	while (i < stc->tba_s)
@@ -53,7 +69,7 @@ int ft_validate_if_dup(t_stc *stc)
 	return (1);
 }
 
-int ft_final_validator(t_stc *stc)
+int	ft_final_validator(t_stc *stc)
 {
 	t_lista	*head;
 	int		min;
@@ -62,7 +78,7 @@ int ft_final_validator(t_stc *stc)
 	head = stc->hash[0];
 	while (head)
 	{
-		if(min < head->content)
+		if (min < head->content)
 			min = head->content;
 		else
 			return (0);
@@ -73,7 +89,7 @@ int ft_final_validator(t_stc *stc)
 
 void	ft_max_finder_list(t_stc *stc, int half)
 {
-	int 	i;
+	int		i;
 	t_lista	*head;
 
 	i = 1;
@@ -95,7 +111,7 @@ void	ft_max_finder_list(t_stc *stc, int half)
 
 void	ft_min_finder_list(t_stc *stc, int half)
 {
-	int 	i;
+	int		i;
 	t_lista	*head;
 
 	i = 0;
@@ -117,12 +133,12 @@ void	ft_min_finder_list(t_stc *stc, int half)
 
 void	ft_final_sort(t_stc *stc, int boole)
 {
-	int	i;
-	int half;
-	int *tmp;
+	int		i;
+	int		half;
+	int		*tmp;
 	t_lista	*head;
 
-	half = stc->a_s/2;
+	half = stc->a_s / 2;
 	ft_max_finder_list(stc, half);
 	i = 0;
 	head = stc->hash[0];

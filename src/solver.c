@@ -6,7 +6,7 @@
 /*   By: panesico <panesico@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 18:28:37 by panesico          #+#    #+#             */
-/*   Updated: 2023/05/27 18:32:02 by panesico         ###   ########.fr       */
+/*   Updated: 2024/03/06 23:29:31 by jorgfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	ft_find_moves_max(t_stc *stc, int *tmp, int num)
 	return (0);
 }
 
-int ft_lis_confirm(t_stc *stc, int num)
+int	ft_lis_confirm(t_stc *stc, int num)
 {
 	int	i;
 
@@ -47,7 +47,7 @@ int ft_lis_confirm(t_stc *stc, int num)
 
 int	ft_find_moves_a(t_stc *stc, int *tmp, int num, int half)
 {
-	int 	i;
+	int		i;
 	t_lista	*head;
 	t_lista	*head2;
 
@@ -59,7 +59,7 @@ int	ft_find_moves_a(t_stc *stc, int *tmp, int num, int half)
 		head = head->next;
 		i++;
 		if (head2->content < num && num < head->content)
-			return(*tmp = i, 1);
+			return (*tmp = i, 1);
 		head2 = head2->next;
 	}
 	while (i < stc->a_s - 1)
@@ -67,17 +67,17 @@ int	ft_find_moves_a(t_stc *stc, int *tmp, int num, int half)
 		head = head->next;
 		i++;
 		if (head2->content < num && num < head->content)
-			return(*tmp = i - stc->a_s, -1);
+			return (*tmp = i - stc->a_s, -1);
 		head2 = head2->next;
 	}
-	if (ft_find_if_between_ends(stc, tmp, num , head))
+	if (ft_find_if_between_ends(stc, tmp, num, head))
 		return (1);
 	return (0);
 }
 /*
-void 	ft_find_moves_b(t_stc *stc, int *tmp, int num, int half)
+void	ft_find_moves_b(t_stc *stc, int *tmp, int num, int half)
 {
-	int 	i;
+	int		i;
 	t_lista	*head;
 	t_lista	*head2;
 
@@ -101,7 +101,7 @@ void 	ft_find_moves_b(t_stc *stc, int *tmp, int num, int half)
 }
  */
 
-int ft_compare_nums(t_stc *stc)
+int	ft_compare_nums(t_stc *stc)
 {
 	int	maxa;
 	int	maxb;
@@ -138,9 +138,9 @@ void	ft_find_best_move(t_stc *stc)
 	int		i;
 	t_lista	*head;
 
-	ft_max_finder_list(stc, stc->a_s/2);
-	ft_min_finder_list(stc, stc->a_s/2);
-	ft_find_moves_a(stc, stc->tmp, stc->hash[1]->content, stc->a_s/2);
+	ft_max_finder_list(stc, stc->a_s / 2);
+	ft_min_finder_list(stc, stc->a_s / 2);
+	ft_find_moves_a(stc, stc->tmp, stc->hash[1]->content, stc->a_s / 2);
 	stc->tmp[1] = 0;
 	head = stc->hash[1];
 	if (head)
@@ -148,8 +148,8 @@ void	ft_find_best_move(t_stc *stc)
 	i = 1;
 	while (head)
 	{
-		ft_find_moves_a(stc, &stc->tmp2[0], head->content, stc->a_s/2);
-		if (i <= stc->b_s/2)
+		ft_find_moves_a(stc, &stc->tmp2[0], head->content, stc->a_s / 2);
+		if (i <= stc->b_s / 2)
 			stc->tmp2[1] = i;
 		else
 			stc->tmp2[1] = i - stc->b_s;
@@ -174,19 +174,19 @@ int	ft_moves_finder(t_stc *stc)
 		return (-2);
 }
 
-int ft_b_more_than_2(t_stc *stc)
+int	ft_b_more_than_2(t_stc *stc)
 {
 	if (stc->hash[1])
 		if (stc->hash[1]->next)
 			if (stc->hash[1]->next->next)
-			return (1);
+				return (1);
 	return (0);
 }
 
 void	ft_move_cheese(t_stc *stc)
 {
-	t_lista *head;
-	t_lista *head_n;
+	t_lista	*head;
+	t_lista	*head_n;
 
 	head = 0;
 	head_n = 0;
@@ -194,12 +194,13 @@ void	ft_move_cheese(t_stc *stc)
 	{
 		head = stc->hash[1];
 		head_n = head->next;
-		if (head->content < head_n->content && head_n->content < head_n->next->content)
+		if (head->content < head_n->content
+			&& head_n->content < head_n->next->content)
 			ft_sb(stc, 1);
 	}
 }
 
-int ft_solver(t_stc *stc)
+int	ft_solver(t_stc *stc)
 {
 	int move_set;
 
